@@ -3,7 +3,12 @@
 <p>Email: {{engineer.email}}</p>
 <p>About: {{engineer.bio}}</p>
 <p>Skills: {{engineer.tech_stack}}</p>
-<p>Send a <a href="">message</a>  <a href="{% url 'create_project' %}">Create a project</a></p>
+<p>Send a <a href="">message</a>
+    <a href="{% url 'create_project' %}">Create a project</a>
+    {% if request.user == engineer %}
+    <a href="{% url 'settings' engineer.id %}">settings</a>
+    {% endif %}
+</p>
 <hr>
 <h3>All my public projects</h3>
 {% for project in public_projects %}

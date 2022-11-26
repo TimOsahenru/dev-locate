@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from .models import Engineer
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
 from .forms import EngineerCreationForm
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import EngineerForm
 
 
 # ................ Login User ........................
@@ -13,6 +15,9 @@ class LoginUser(LoginView):
     model = Engineer
     redirect_authenticated_user = True
     template_name = '../templates/login.html'
+
+    def get_success_url(self):
+        return reverse('profile', args=[self.request.user.id])
 
 
 # ............................. SignUp User ....................
@@ -48,3 +53,16 @@ class EngineerProfile(DetailView):
         return context
 
 
+# ............. Engineer Settings ........................
+class EngineerSettings(LoginRequiredMixin, UpdateView):
+    model = Engineer
+    template_name = '../templates/settings.html'
+    form_class = EngineerForm
+    
+    def form_valid(self, form):
+        if form.is_valid():
+            form.save()
+            return redirect('profile', pk=self.request.user.id)
+        return super(EngineerSettings, self).form_valid(form)
+
+# only engineers should be able to update their profile
