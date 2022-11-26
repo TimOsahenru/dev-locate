@@ -16,4 +16,4 @@ class EngineerCreationForm(UserCreationForm):
 class EngineerForm(forms.ModelForm):
     class Meta:
         model = Engineer
-        fields = ['email', 'bio', 'country', 'years_of_experience', 'tech_stack']
+        fields = ['email', 'bio', 'country', 'avatar', 'years_of_experience', 'tech_stack']

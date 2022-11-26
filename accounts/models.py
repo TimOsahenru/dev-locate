@@ -6,7 +6,7 @@ class Engineer(AbstractUser):
     username = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True, null=True)
     bio = models.TextField(default='little about you...')
-    # avatar =
+    avatar = models.ImageField(default='profile.png')
     country = models.CharField(max_length=200)
     years_of_experience = models.PositiveIntegerField(null=True, blank=True)
     tech_stack = models.CharField(null=True, blank=True, max_length=300, default='stack_one | stack_two | stack_three')
