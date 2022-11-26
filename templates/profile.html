@@ -1,0 +1,27 @@
+<a href="{{request.META.HTTP_REFERER}}">back</a>
+<h4>Name: {{engineer.username|title}}</h4>
+<p>Email: {{engineer.email}}</p>
+<p>About: {{engineer.bio}}</p>
+<p>Skills: {{engineer.tech_stack}}</p>
+<p>Send a <a href="">message</a>  <a href="{% url 'create_project' %}">Create a project</a></p>
+<hr>
+<h3>All my public projects</h3>
+{% for project in public_projects %}
+<h4>Project name: {{project.name|title}}</h4>
+<p>Tech used: {{project.tech_used}}</p>
+<p>about: {{project.description}}</p>
+{% if request.user == engineer %}
+<a href="{% url 'edit_project' project.id %}">Edit</a> <a href="{% url 'delete_project' project.id %}">Delete</a>
+{% endif %}
+<hr>
+{% endfor %}
+{% if request.user == engineer %}
+<h3>All my private projects</h3>
+{% for project in private_projects %}
+<h4>Project name: {{project.name|title}}</h4>
+<p>Tech used: {{project.tech_used}}</p>
+<p>about: {{project.description}}</p>
+<a href="{% url 'edit_project' project.id %}">Edit</a> <a href="{% url 'delete_project' project.id %}">Delete</a>
+<hr>
+{% endfor %}
+{% endif %}

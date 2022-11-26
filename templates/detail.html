@@ -1,0 +1,9 @@
+<a href="{{request.META.HTTP_REFERER}}">back</a>
+<h4>Project name: {{project.name|title}}</h4>
+<p>Tech used: {{project.tech_used}}</p>
+<p>about: {{project.description}}</p>
+<a href="{{project.repo_url}}" target="_blank">Repo</a>
+<a href="{{project.live_url}}" target="_blank">Live url</a>
+<h4>Engineer: {{project.engineer.username|title}}</h4>
+<p>Checkout my <a href="{% url 'profile' project.engineer.id %}">profile</a> </p>
+<hr>

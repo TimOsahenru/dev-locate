@@ -1,0 +1,6 @@
+<p>Are you sure you want to delete this project?</p>
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes">
+    <a href="{{request.META.HTTP_REFERER}}">No</a>
+</form>

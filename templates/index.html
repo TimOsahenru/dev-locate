@@ -1,0 +1,17 @@
+<header>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+    <h4>{{request.user.username|title}}</h4>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    <hr>
+</header>
+{% for project in projects %}
+<h4>Project name: {{project.name|title}}</h4>
+<p>Tech used: {{project.tech_used}}</p>
+<p>about: {{project.description}}</p>
+<h4>Engineer: {{project.engineer.username|title}}</h4>
+<a href="{% url 'detail_project' project.id %}">more..</a>
+<hr>
+{% endfor %}
