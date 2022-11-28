@@ -1,10 +1,53 @@
-<a href="{{request.META.HTTP_REFERER}}">back</a>
-<h4>Project name: {{project.name|title}}</h4>
-<img src="{{project.image_url}}">
-<p>Tech used: {{project.tech_used}}</p>
-<p>about: {{project.description}}</p>
-<a href="{{project.repo_url}}" target="_blank">Repo</a>
-<a href="{{project.live_url}}" target="_blank">Live url</a>
-<h4>Engineer: {{project.engineer.username|title}}</h4>
-<p>Checkout my <a href="{% url 'profile' project.engineer.id %}">profile</a> </p>
-<hr>
+{% extends 'base.html' %}
+{% block content %}
+<main class="layout">
+    <div class="container">
+        <div class="layout__box" style="margin-top: 50px;">
+            <div class="layout__boxHeader">
+                <div class="layout__boxTitle">
+                    <a href="{{request.META.HTTP_REFERER}}">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                            <title>arrow-left</title>
+                            <path
+                                    d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"
+                            ></path>
+                        </svg>
+                    </a>
+                    <h3>back</h3>
+                </div>
+            </div>
+
+            <div class="activities-page layout__body">
+                <div class="activities__box">
+                    <div class="activities__boxContent">
+                        <div class="activities__boxRoomContent">
+                            <h1>{{project.name|title}}</h1>
+                            <span><strong>Tech used:</strong> {{project.tech_used}}</span>
+                        </div>
+                        <div class="activities__boxRoomContent">
+                            <img src="{{project.image_url}}">
+                            {{project.description}}
+                        </div>
+                        <div class="form__action" style="margin-top: 10px;">
+                            <a class="btn btn--dark" target="_blank" href="{{project.repo_url}}">Repo</a>
+                            <a class="btn btn--main" target="_blank" href="{{project.live_url}}">Live</a>
+                        </div>
+                    </div>
+                    <div class="activities__boxHeader roomListRoom__header">
+                        <a href="{% url 'profile' project.engineer.id %}" class="roomListRoom__author">
+                            <div class="avatar avatar--small">
+                                <img src="{{project.engineer.avatar.url}}" />
+                            </div>
+                            <p>
+                                Checkout my profile
+
+                            </p>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

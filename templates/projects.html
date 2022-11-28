@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="profile-page layout layout--3">
+    <div class="container">
+        <!-- Topics Start -->
+        <div class="topics">
+            <div class="topics__header">
+                <h2>Shortcuts</h2>
+            </div>
+            <ul class="topics__list">
+                <li>
+                    <a href="{% url 'profile' engineer.id %}" class="active">Profile</a>
+                </li>
+                <li>
+                    <a href="#">My projects</a>
+                </li>
+                <li>
+                    <a href="#">Private projects</a>
+                </li>
+
+                <li>
+                    <a href="#">Educational info</a>
+                </li>
+                <li>
+                    <a href="#">Account settings</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Topics End -->
+
+        <!-- Room List Start -->
+        <div class="roomList">
+
+            <div class="roomList__header">
+                <div>
+                    <h2>Projects by {{engineer.username|title}}</a>
+                    </h2>
+                </div>
+            </div>
+            {% for project in public_projects %}
+            <div class="roomListRoom">
+
+                <div class="roomListRoom__content">
+                    <a href="{% url 'detail_project' project.id %}">
+                        {{project.name|title}}
+                        <img src="{{project.image_url}}">
+                    </a>
+                    <p>
+                        {{project.description}}
+                    </p>
+                </div>
+                <div class="roomListRoom__meta">
+                    {% if request.user == engineer %}
+                    <div class="form__action" style="margin-top: 10px;">
+                        <a class="btn btn--dark" href="{% url 'edit_project' project.id %}">Edit</a>
+                        <a class="btn btn--main" target="_blank" href="{% url 'delete_project' project.id %}">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Room List End -->
+
+        <!-- Activities Start -->
+        <div class="activities">
+            <div class="activities__header">
+                <h2>Recent Activities</h2>
+            </div>
+            <div class="activities__box">
+                <div class="activities__boxHeader roomListRoom__header">
+                    <a href="profile.html" class="roomListRoom__author">
+                        <div class="avatar avatar--small">
+                            <img src="https://randomuser.me/api/portraits/women/11.jpg" />
+                        </div>
+                        <p>
+                            @sulamita_ivy
+                            <span>5 days ago</span>
+                        </p>
+                    </a>
+                    <div class="roomListRoom__actions">
+                        <a href="#">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                <title>delete</title>
+                                <path
+                                        d="M30 4h-8v-3c0-0.553-0.447-1-1-1h-10c-0.553 0-1 0.447-1 1v3h-8v2h2v24c0 1.104 0.897 2 2 2h20c1.103 0 2-0.896 2-2v-24h2v-2h-0zM12 2h8v2h-8v-2zM26.002 30l-0.002 1v-1h-20v-24h20v24h0.002z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="activities__boxContent">
+                    <p>replied to post “<a href="room.html">100 Days of code challenge!</a>”</p>
+                    <div class="activities__boxRoomContent">
+                        I’ll have to try this sometime. Really like this idea. Wanna talk about it? I ‘m....
+                    </div>
+                </div>
+            </div>
+
+            <div class="activities__box">
+                <div class="activities__boxHeader roomListRoom__header">
+                    <a href="profile.html" class="roomListRoom__author">
+                        <div class="avatar avatar--small active">
+                            <img src="https://randomuser.me/api/portraits/men/13.jpg" />
+                        </div>
+                        <p>
+                            @mr_spshuvo
+                            <span>5 days ago</span>
+                        </p>
+                    </a>
+                    <div class="roomListRoom__actions">
+                        <a href="#">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                <title>delete</title>
+                                <path
+                                        d="M30 4h-8v-3c0-0.553-0.447-1-1-1h-10c-0.553 0-1 0.447-1 1v3h-8v2h2v24c0 1.104 0.897 2 2 2h20c1.103 0 2-0.896 2-2v-24h2v-2h-0zM12 2h8v2h-8v-2zM26.002 30l-0.002 1v-1h-20v-24h20v24h0.002z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="activities__boxContent">
+                    <p>replied to post “<a href="room.html">100 Days of code challenge!</a>”</p>
+                    <div class="activities__boxRoomContent">
+                        I’ll have to try this sometime. Really like this idea. Wanna talk about it? I ‘m....
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Activities End -->
+    </div>
+</main>
+{% endblock %}

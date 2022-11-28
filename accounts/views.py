@@ -44,8 +44,14 @@ class EngineerProfile(DetailView):
     model = Engineer
     template_name = '../templates/profile.html'
 
+
+# ................ Engineer projects .......................
+class EngineerProject(DetailView):
+    model = Engineer
+    template_name = '../templates/projects.html'
+
     def get_context_data(self, **kwargs):
-        context = super(EngineerProfile, self).get_context_data()
+        context = super(EngineerProject, self).get_context_data()
         pk = self.kwargs.get('pk')
         context['engineer'] = Engineer.objects.get(id=pk)
         context['public_projects'] = context['engineer'].project_set.filter(make_public=True)
