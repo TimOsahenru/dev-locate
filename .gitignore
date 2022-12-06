@@ -1,1 +1,6 @@
 /config/.env
+__init__.cpython-36.pyc
+functions.cpython-36.pyc
+.DS_Store
+__pycache__
+*.pyc

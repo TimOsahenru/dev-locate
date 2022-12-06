@@ -1,0 +1,10 @@
+{% for mail in mails %}
+<p>sender{{mail.sender.username}}</p>
+<p>message{{mail.body}}</p>
+{% endfor %}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="send">
+</form>

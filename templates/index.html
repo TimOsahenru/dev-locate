@@ -10,13 +10,15 @@
       </div>
       <ul class="topics__list">
         <li>
-          <a href="/" class="active">Inbox <span>553</span></a>
+          <a href="/">Inbox <span>553</span></a>
         </li>
+        {% if request.user.is_authenticated %}
         <li>
-          <a href="/">My projects <span>232</span></a>
+          <a href="{% url 'projects' request.user.id %}">My projects <span>{{project_nos}}</span></a>
         </li>
+        {% endif %}
         <li>
-          <a href="/">Logout</a>
+          <a href="{% url 'logout' %}">Logout</a>
         </li>
       </ul>
     </div>
@@ -43,7 +45,7 @@
       </div>
       <div class="roomList__header">
         <div>
-          <p>100 developers available</p>
+          <p>{{engineer_count}} developers available</p>
         </div>
         <a class="btn btn--main" href="{% url 'create_project' %}">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -60,7 +62,7 @@
         <div class="roomListRoom__header">
           <a href="{% url 'profile' project.engineer.id %}" class="roomListRoom__author">
             <div class="avatar avatar--small">
-              <img src="{{project.engineer.avatar}}" />
+              <img src="{{project.engineer.avatar.url}}" />
             </div>
             <span>@{{project.engineer.username|title}}</span>
           </a>

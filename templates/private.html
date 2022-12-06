@@ -11,18 +11,15 @@
                 <li>
                     <a href="{% url 'profile' engineer.id %}" class="active">Profile</a>
                 </li>
-                {% if request.user == engineer %}
                 <li>
-                    <a href="{% url 'private' engineer.id %}">Private projects</a>
+                    <a href="{% url 'projects' engineer.id %}">My projects</a>
                 </li>
-
                 <li>
                     <a href="{% url 'settings' engineer.id %}">Account settings</a>
                 </li>
                 <li>
                     <a href="{% url 'logout' %}">Logout</a>
                 </li>
-                {% endif %}
             </ul>
         </div>
         <!-- Topics End -->
@@ -46,7 +43,7 @@
                     {% endif %}
                 </div>
             </div>
-            {% for project in public_projects %}
+            {% for project in private_projects %}
             <div class="roomListRoom">
 
                 <div class="roomListRoom__content">

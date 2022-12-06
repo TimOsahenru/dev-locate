@@ -11,15 +11,9 @@
                 <li>
                     <a href="{% url 'projects' engineer.id %}">My projects</a>
                 </li>
-                <li>
-                    <a href="/" class="active">Basic info</a>
-                </li>
-                <li>
-                    <a href="/">Educational info</a>
-                </li>
                 {% if request.user == engineer %}
                 <li>
-                    <a href="/">Private projects</a>
+                    <a href="{% url 'private' engineer.id %}">Private projects</a>
                 </li>
                 <li>
                     <a href="{% url 'settings' engineer.id %}">Account settings</a>
@@ -43,7 +37,7 @@
                 <div class="profile__info">
                     <h3>{{engineer.username|title}}</h3>
                     <p>@{{engineer.username}}</p>
-                    <a href="#" class="btn btn--main btn--pill">message</a>
+                    <a href="{% url 'inbox' engineer.id %}" class="btn btn--main btn--pill">message</a>
                 </div>
                 <div class="profile__about">
                     <h3>About</h3>

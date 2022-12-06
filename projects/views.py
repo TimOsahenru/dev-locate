@@ -7,59 +7,77 @@ from django.urls import reverse_lazy, reverse
 from .forms import ProjectForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.models import Engineer
+from django.db.models import Q
 
 
-# ............. All Projects ...............
 class AllProjects(ListView):
+    """
+    All projects listed on a single page
+    """
+
     model = Project
-    context_object_name = 'projects'
-    template_name = '../templates/index.html'
+    context_object_name = "projects"
+    template_name = "../templates/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AllProjects, self).get_context_data()
+        context["projects"] = Project.objects.filter(make_public=True)
+        context["project_nos"] = (
+            context["projects"].filter(engineer=self.request.user).count()
+        )
+        context["engineer_count"] = Engineer.objects.all().count()
+
+        q = self.request.GET.get("q") or ""
+        if q:
+            context["projects"] = context["projects"].filter(
+                Q(engineer__country__icontains=q)
+                | Q(engineer__username__icontains=q)
+                | Q(engineer__tech_stack__icontains=q)
+            )
+        return context
 
     def get_queryset(self):
         public_projects = Project.objects.filter(make_public=True)
         return public_projects
 
 
-# ............. Detail Project ...............
 class ProjectDetail(DetailView):
     model = Project
-    template_name = '../templates/detail.html'
+    template_name = "../templates/detail.html"
 
 
-# ............. Edit Project ...............
 class ProjectEdit(LoginRequiredMixin, UpdateView):
     model = Project
-    template_name = '../templates/edit.html'
+    template_name = "../templates/edit.html"
     form_class = ProjectForm
 
     def get_success_url(self):
-        return reverse('profile', args=[self.request.user.id])
+        return reverse("profile", args=[self.request.user.id])
+
 
 # to ensure only creators can edit their projects
 
 
-# ............. Create Project ...............
 class ProjectCreate(LoginRequiredMixin, CreateView):
     model = Project
-    template_name = '../templates/create.html'
+    template_name = "../templates/create.html"
     form_class = ProjectForm
-    success_url = reverse_lazy('all_projects')
+    success_url = reverse_lazy("all_projects")
 
     def form_valid(self, form):
         if form.is_valid():
             form.save(commit=False)
             form.instance.engineer = self.request.user
             form.save()
-            return redirect('profile', pk=self.request.user.id)
+            return redirect("profile", pk=self.request.user.id)
         return super(ProjectCreate, self).form_valid(form)
 
 
-# ............. Delete Project ........................
 class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
-    template_name = '../templates/delete.html'
+    template_name = "../templates/delete.html"
 
     def get_success_url(self):
-        return reverse('profile', args=[self.request.user.id])
+        return reverse("profile", args=[self.request.user.id])
 
     # to ensure only creators can delete their projects

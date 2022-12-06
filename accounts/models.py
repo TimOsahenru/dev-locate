@@ -1,18 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from mail.models import Inbox
 
 
 class Engineer(AbstractUser):
     username = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True, null=True)
-    bio = models.TextField(default='little about you...')
-    avatar = models.ImageField(default='profile.png')
+    bio = models.TextField()
+    avatar = models.ImageField(default="profile.png")
     country = models.CharField(max_length=200)
     years_of_experience = models.PositiveIntegerField(null=True, blank=True)
-    tech_stack = models.CharField(null=True, blank=True, max_length=300, default='stack_one | stack_two | stack_three')
+    tech_stack = models.CharField(null=True, blank=True, max_length=300)
+    inbox = models.ManyToManyField(Inbox, on_delete=models.CASCADE)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username"]
 
     def __str__(self):
         return self.username
@@ -24,6 +26,3 @@ class Engineer(AbstractUser):
 #
 #     def __str__(self):
 #         return self.name
-
-
-
