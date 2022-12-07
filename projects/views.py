@@ -22,9 +22,6 @@ class AllProjects(ListView):
     def get_context_data(self, **kwargs):
         context = super(AllProjects, self).get_context_data()
         context["projects"] = Project.objects.filter(make_public=True)
-        context["project_nos"] = (
-            context["projects"].filter(engineer=self.request.user).count()
-        )
         context["engineer_count"] = Engineer.objects.all().count()
 
         q = self.request.GET.get("q") or ""

@@ -1,6 +1,10 @@
 # Welcome to dev-locate
-A platform where developers can signup with their projects on display and hiring managers can make searches of developers based on location, year of experience, tech stack or any other search query.
+A platform where developers can sign up with their projects on display and hiring managers can make searches of developers based on location, year of experience, tech stack or any other search query.
 
+# Setting up a virtual environment
+The following process describes how to set up a virtual environment before install the dependencies used for this projects
++ `python -m venv venv` to create a virtual environment
++ `venv\Scripts\activate` to activate the virtual environment
 
 # Install requirements
 + Django. `pip install django` version 4.1 was used for this project
@@ -25,3 +29,38 @@ Alternatively you can install all the dependencies from the `requirements.txt` f
 + Copy the generated secret key and paste inside the `.env` file you created like this
 
 `SECRET_KEY='Yourgeneratedsecretkeywithoutanyspace'`
+
+# How to (Project tutorial)
+## Using dev-locate as an Engineer
+You need to SignUp as a User to be able to create a project but if you're in a haste to check out this application you can log in using `vee@gmail.com`
+
+as your login email and `pycongh22` as your login password.
+
+## Creating a project
+To create a project you must be logged in, once you're logged in you'll be redirected to your profile.
+
+![Profile page](./README/profile.png)
+
+To create your first project visit `My project` tab and click the `create` button
+
+![Profile page](./README/public.png)
+
+Once a project has been created you can choose to either make it public by checking `make public` or leave it private by not checking.
+
+![Profile page](./README/make.png)
+
+A private project is only visible to you(the requested user)
+
+To edit a Project(public or private) visit the necessary tab and click on the edit button to make an update
+
+![Profile page](./README/edit.jpg)
+
+Once a project has been deleted it cannot be recovered
+
+To modify your profile settings click on `Account settings` tab and you should be able to do that from here
+
+![Profile page](./README/settings.png)
+
+## Using dev-locate as a Hiring manager
+As a hiring manager you do not need to create an account to signup you can make searches of developers
+from the search bar by either searching by *country* *tech stack* or *username*

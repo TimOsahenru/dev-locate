@@ -16,10 +16,10 @@
         <li>
           <a href="{% url 'projects' request.user.id %}">My projects <span>{{project_nos}}</span></a>
         </li>
-        {% endif %}
         <li>
           <a href="{% url 'logout' %}">Logout</a>
         </li>
+        {% endif %}
       </ul>
     </div>
     <!-- Topics End -->
