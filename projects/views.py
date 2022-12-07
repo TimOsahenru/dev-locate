@@ -34,8 +34,7 @@ class AllProjects(ListView):
         return context
 
     def get_queryset(self):
-        public_projects = Project.objects.filter(make_public=True)
-        return public_projects
+        return Project.objects.filter(make_public=True)
 
 
 class ProjectDetail(DetailView):
