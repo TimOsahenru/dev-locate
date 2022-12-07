@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# from mail.models import Inbox
 
 
 class Engineer(AbstractUser):
@@ -11,7 +10,6 @@ class Engineer(AbstractUser):
     country = models.CharField(max_length=200)
     years_of_experience = models.PositiveIntegerField(null=True, blank=True)
     tech_stack = models.CharField(null=True, blank=True, max_length=300)
-    # inbox = models.ManyToManyField(Inbox, on_delete=models.CASCADE)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
