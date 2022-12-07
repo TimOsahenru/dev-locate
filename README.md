@@ -43,24 +43,39 @@ To create a project you must be logged in, once you're logged in you'll be redir
 
 To create your first project visit `My project` tab and click the `create` button
 
-![Profile page](./README/public.png)
+![Public project page](./README/public.png)
 
 Once a project has been created you can choose to either make it public by checking `make public` or leave it private by not checking.
 
-![Profile page](./README/make.png)
+![make public icon](./README/make.png)
 
 A private project is only visible to you(the requested user)
 
 To edit a Project(public or private) visit the necessary tab and click on the edit button to make an update
 
-![Profile page](./README/edit.jpg)
+![Project edit page](./README/edit.jpg)
 
 Once a project has been deleted it cannot be recovered
 
 To modify your profile settings click on `Account settings` tab and you should be able to do that from here
 
-![Profile page](./README/settings.png)
+![User settings page](./README/settings.png)
 
 ## Using dev-locate as a Hiring manager
 As a hiring manager you do not need to create an account to signup you can make searches of developers
-from the search bar by either searching by *country* *tech stack* or *username*
+from the search bar by either searching by _country_, _tech stack_ or _username_
+
+![Home page](./README/index.png)
+
+When you click on a project, you will be redirected to a more detailed page about the project, where you can
+view the repo of the project or a live url
+
+![Detail page](./README/details.png)
+
+To contact an Engineer click on `Checkout my profile` in the detailed page you will be redirected
+
+to the profile of the engineer that created that project and also click on the `message` button
+
+you need to create an account tho to send a message
+
+![Profile page](./README/profile_b.png)
