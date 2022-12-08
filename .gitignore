@@ -4,5 +4,3 @@ functions.cpython-36.pyc
 .DS_Store
 __pycache__
 *.pyc
-docs/build
-docs/source/_templates
