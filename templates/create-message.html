@@ -1,7 +1,10 @@
+<p>Receiver: {{engineer.username}}</p>
+<p>Sender {{request.user.username}}</p>
 {% for mail in mails %}
-<p>sender{{mail.sender.username}}</p>
-<p>message{{mail.body}}</p>
+<p>Sender:{{request.user.username}}</p>
+<p>Message: {{mail.body}}</p>
 {% endfor %}
+
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}

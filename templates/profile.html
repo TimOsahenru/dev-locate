@@ -37,7 +37,7 @@
                 <div class="profile__info">
                     <h3>{{engineer.username|title}}</h3>
                     <p>@{{engineer.username}}</p>
-                    <a href="{% url 'inbox' engineer.id %}" class="btn btn--main btn--pill">message</a>
+                    <a href="{% url 'create-message' engineer.id %}" class="btn btn--main btn--pill">message</a>
                 </div>
                 <div class="profile__about">
                     <h3>About</h3>
