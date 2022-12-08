@@ -1,7 +1,6 @@
 from django.test import TestCase
 from .models import Project
 from django.core.files.images import ImageFile
-from django.core.files.uploadedfile import SimpleUploadedFile
 from io import BytesIO
 
 

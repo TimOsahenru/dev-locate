@@ -8,14 +8,6 @@ from .forms import ProjectForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.models import Engineer
 from django.db.models import Q
-from django.http import HttpResponse
-from django.core.serializers import serialize
-
-
-def django_models_json(request):
-    qs = Engineer.objects.first()
-    data = serialize("json", [qs], fields=("username", "email", "tech_stack"))
-    return HttpResponse(data, content_type="application/json")
 
 
 class AllProjects(ListView):

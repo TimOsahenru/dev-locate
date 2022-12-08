@@ -9,6 +9,15 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import EngineerForm
+from django.http import HttpResponse
+from django.core.serializers import serialize
+
+
+def django_models_json(request, pk):
+    qs = Engineer.objects.get(id=pk)
+    # qs = Engineer.objects.first()
+    data = serialize("json", [qs], fields=("username", "email", "tech_stack"))
+    return HttpResponse(data, content_type="application/json")
 
 
 class LoginUser(LoginView):
@@ -93,6 +102,4 @@ class EngineerSettings(LoginRequiredMixin, UpdateView):
             form.save()
             return redirect("profile", pk=self.request.user.id)
         return super(EngineerSettings, self).form_valid(form)
-
-
 # only engineers should be able to update their profile
