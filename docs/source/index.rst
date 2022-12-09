@@ -21,6 +21,33 @@ Indices and tables
 
 dev-locate is a platform where developers can sign up with their projects on display and hiring managers can make searches of developers based on location, year of experience, tech stack or any other search query.
 
+Basic setup
+==================================
+I assume the average user of this application has a fundamental understanding of the Python programming language,
+has git running on their machine and has a desired editor (VScode or Pycharm)
+
+if you do not have Python running on your machine you can check [here](https://www.digitalocean.com/community/tutorials/install-python-windows-10) to
+begin with how to run and setup Python on your machine.
+
+to begin with how to run git on your machine check [here](https://phoenixnap.com/kb/how-to-install-git-windows) for a detailed instruction
+I comfortably use [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) but any editor with a commandline/ terminal will do for a beginner
+
+
+Cloning from GitHub
+==================================
+Once you have installed the above and have a ready environment clone this project to your machine by clicking on
+
+.. image:: /images/code.jpg
+
+click on the to copy this project
+
+.. image:: /images/https.jpg
+
+Now, we are going to make this project available on your machine with `git clone https://github.com/TimOsahenru/dev-locate.git`
+
+VIOLA!!!
+
+
 Setting up a virtual environment
 ==================================
 
