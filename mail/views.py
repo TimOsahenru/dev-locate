@@ -16,6 +16,7 @@ class CreateMessage(LoginRequiredMixin, CreateView):
         pk = self.kwargs.get('pk')
         context['engineer'] = Engineer.objects.get(id=pk)
         context['mails'] = Inbox.objects.filter(sender=self.request.user)
+        context['receiver_engineer'] = Inbox.objects.filter(receiver=self.get_object())
         return context
 
     def form_valid(self, form):
@@ -26,3 +27,7 @@ class CreateMessage(LoginRequiredMixin, CreateView):
             return redirect("create-message", pk=self.request.user.id)
         return super(CreateMessage, self).form_valid(form)
 
+    # def get_object(self, **kwargs):
+    #     pk = self.kwargs.get('pk')
+    #     receiver_engineer = Engineer.objects.get(id=pk)
+    #     return receiver_engineer
