@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
-from .models import Engineer
+from .models import Engineer, Message
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.edit import FormView, UpdateView, CreateView
 from .forms import EngineerCreationForm
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -103,3 +103,8 @@ class EngineerSettings(LoginRequiredMixin, UpdateView):
             return redirect("profile", pk=self.request.user.id)
         return super(EngineerSettings, self).form_valid(form)
 # only engineers should be able to update their profile
+
+
+class CreateMessage(CreateView):
+    model = Message
+    template_name = '../templates/create-message.html'

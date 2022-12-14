@@ -46,10 +46,6 @@ INSTALLED_APPS = [
     # Custom apps
     "projects.apps.ProjectsConfig",
     "accounts.apps.AccountsConfig",
-    "mail.apps.MailConfig",
-
-    # third party
-    "import_export"
 ]
 
 AUTH_USER_MODEL = "accounts.Engineer"
