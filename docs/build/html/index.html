@@ -52,10 +52,10 @@
 <h1>Basic setup<a class="headerlink" href="#basic-setup" title="Permalink to this heading">¶</a></h1>
 <p>I assume the average user of this application has a fundamental understanding of the Python programming language,
 has git running on their machine and has a desired editor (VScode or Pycharm)</p>
-<p>if you do not have Python running on your machine you can check [here](<a class="reference external" href="https://www.digitalocean.com/community/tutorials/install-python-windows-10">https://www.digitalocean.com/community/tutorials/install-python-windows-10</a>) to
+<p>if you do not have Python running on your machine you can check <a class="reference external" href="https://www.digitalocean.com/community/tutorials/install-python-windows-10/">here:</a> to
 begin with how to run and setup Python on your machine.</p>
-<p>to begin with how to run git on your machine check [here](<a class="reference external" href="https://phoenixnap.com/kb/how-to-install-git-windows">https://phoenixnap.com/kb/how-to-install-git-windows</a>) for a detailed instruction
-I comfortably use [PyCharm](<a class="reference external" href="https://www.jetbrains.com/pycharm/download/#section=windows">https://www.jetbrains.com/pycharm/download/#section=windows</a>) but any editor with a commandline/ terminal will do for a beginner</p>
+<p>to begin with how to run git on your machine check <a class="reference external" href="https://phoenixnap.com/kb/how-to-install-git-windows/">here:</a> for a detailed instruction
+I comfortably use <a class="reference external" href="https://www.jetbrains.com/pycharm/download/#section=windows/">PyCharm:</a> but any editor with a commandline/ terminal will do for a beginner</p>
 </section>
 <section id="cloning-from-github">
 <h1>Cloning from GitHub<a class="headerlink" href="#cloning-from-github" title="Permalink to this heading">¶</a></h1>
@@ -63,50 +63,50 @@ I comfortably use [PyCharm](<a class="reference external" href="https://www.jetb
 <img alt="_images/code.jpg" src="_images/code.jpg" />
 <p>click on the to copy this project</p>
 <img alt="_images/https.jpg" src="_images/https.jpg" />
-<p>Now, we are going to make this project available on your machine with <cite>git clone https://github.com/TimOsahenru/dev-locate.git</cite></p>
+<p>Now, we are going to make this project available on your machine with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/TimOsahenru/dev-locate.git</span></code></p>
 <p>VIOLA!!!</p>
 </section>
 <section id="setting-up-a-virtual-environment">
 <h1>Setting up a virtual environment<a class="headerlink" href="#setting-up-a-virtual-environment" title="Permalink to this heading">¶</a></h1>
 <p>The following process describes how to set up a virtual environment before install the dependencies used for this projects
-+ <cite>python -m venv venv</cite> to create a virtual environment
-+ <cite>venvScriptsactivate</cite> to activate the virtual environment</p>
++ <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">venv</span></code> to create a virtual environment
++ <code class="docutils literal notranslate"><span class="pre">venv\Scripts\activate</span></code> to activate the virtual environment</p>
 </section>
 <section id="install-requirements">
 <h1>Install requirements<a class="headerlink" href="#install-requirements" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
-<li><p>Django. <cite>pip install django</cite> version 4.1 was used for this project</p></li>
-<li><p>django-environ for environment variables <cite>pip install django-environ</cite></p></li>
-<li><p><cite>pip install Pillow</cite>  which is a library for image processing.</p></li>
-<li><p><cite>pip install black</cite> for standard code formatting</p></li>
+<li><p>Django. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">django</span></code> version 4.1 was used for this project</p></li>
+<li><p>django-environ for environment variables <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">django-environ</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">Pillow</span></code>  which is a library for image processing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">black</span></code> for standard code formatting</p></li>
 </ul>
-<p>Alternatively you can install all the dependencies from the <cite>requirements.txt</cite> file by running this command on your terminal</p>
-<p><cite>pip install -r requirements.txt</cite></p>
+<p>Alternatively you can install all the dependencies from the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file by running this command on your terminal</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
 </section>
 <section id="developer-setup">
 <h1>Developer setup<a class="headerlink" href="#developer-setup" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
-<li><p>Create a <cite>.env</cite> file inside your <cite>config</cite> repository, then create a variable called <cite>SECRET_KEY</cite> inside the <cite>.env</cite> file</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file inside your <code class="docutils literal notranslate"><span class="pre">config</span></code> repository, then create a variable called <code class="docutils literal notranslate"><span class="pre">SECRET_KEY</span></code> inside the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file</p></li>
 <li><p>Generate your secret key by running the command below on your terminal</p></li>
 </ul>
-<p><cite>python -c ‘from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())’</cite></p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">'from</span> <span class="pre">django.core.management.utils</span> <span class="pre">import</span> <span class="pre">get_random_secret_key;</span> <span class="pre">print(get_random_secret_key())'</span></code></p>
 <ul class="simple">
-<li><p>Copy the generated secret key and paste inside the <cite>.env</cite> file you created like this</p></li>
+<li><p>Copy the generated secret key and paste inside the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file you created like this</p></li>
 </ul>
-<p><cite>SECRET_KEY=’Yourgeneratedsecretkeywithoutanyspace’</cite></p>
+<p><code class="docutils literal notranslate"><span class="pre">SECRET_KEY='Yourgeneratedsecretkeywithoutanyspace'</span></code></p>
 </section>
 <section id="using-dev-locate-as-an-engineer">
 <h1>Using dev-locate as an Engineer<a class="headerlink" href="#using-dev-locate-as-an-engineer" title="Permalink to this heading">¶</a></h1>
-<p>You need to SignUp as a User to be able to create a project but if you’re in a haste to check out this application you can log in using <cite>vee&#64;gmail.com</cite></p>
-<p>as your login email and <cite>pycongh22</cite> as your login password.</p>
+<p>You need to SignUp as a User to be able to create a project but if you’re in a haste to check out this application you can log in using <code class="docutils literal notranslate"><span class="pre">vee&#64;gmail.com</span></code></p>
+<p>as your login email and <code class="docutils literal notranslate"><span class="pre">pycongh22</span></code> as your login password.</p>
 </section>
 <section id="creating-a-project">
 <h1>Creating a project<a class="headerlink" href="#creating-a-project" title="Permalink to this heading">¶</a></h1>
 <p>To create a project you must be logged in, once you’re logged in you’ll be redirected to your profile.</p>
 <a class="reference internal image-reference" href="_images/profile.png"><img alt="_images/profile.png" src="_images/profile.png" style="width: 450.5px; height: 320.0px;" /></a>
-<p>To create your first project visit <cite>My project</cite> tab and click the <cite>create</cite> button</p>
+<p>To create your first project visit <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">project</span></code> tab and click the <code class="docutils literal notranslate"><span class="pre">create</span></code> button</p>
 <a class="reference internal image-reference" href="_images/public.png"><img alt="_images/public.png" src="_images/public.png" style="width: 480.0px; height: 325.0px;" /></a>
-<p>Once a project has been created you can choose to either make it public by checking <cite>make public</cite> or leave it private by not checking.</p>
+<p>Once a project has been created you can choose to either make it public by checking <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">public</span></code> or leave it private by not checking.</p>
 <a class="reference internal image-reference" href="_images/make.png"><img alt="_images/make.png" src="_images/make.png" style="width: 214.5px; height: 69.0px;" /></a>
 <p>A private project is only visible to you(the requested user)</p>
 <p>To edit a Project(public or private) visit the necessary tab and click on the edit button to make an update</p>
@@ -115,7 +115,7 @@ I comfortably use [PyCharm](<a class="reference external" href="https://www.jetb
 <p class="admonition-title">Warning</p>
 <p>Warning! Once a project has been deleted it cannot be recovered</p>
 </div>
-<p>To modify your profile settings click on <cite>Account settings</cite> tab and you should be able to do that from here</p>
+<p>To modify your profile settings click on <code class="docutils literal notranslate"><span class="pre">Account</span> <span class="pre">settings</span></code> tab and you should be able to do that from here</p>
 <a class="reference internal image-reference" href="_images/settings.png"><img alt="_images/settings.png" src="_images/settings.png" style="width: 278.0px; height: 276.0px;" /></a>
 </section>
 <section id="using-dev-locate-as-a-hiring-manager">
@@ -126,8 +126,8 @@ from the search bar by either searching by country, tech stack or username</p>
 <p>When you click on a project, you will be redirected to a more detailed page about the project, where you can
 view the repo of the project or a live url</p>
 <a class="reference internal image-reference" href="_images/details.png"><img alt="_images/details.png" src="_images/details.png" style="width: 409.5px; height: 283.0px;" /></a>
-<p>To contact an Engineer click on <cite>Checkout my profile</cite> in the detailed page you will be redirected</p>
-<p>to the profile of the engineer that created that project and also click on the <cite>message</cite> button</p>
+<p>To contact an Engineer click on <code class="docutils literal notranslate"><span class="pre">Checkout</span> <span class="pre">my</span> <span class="pre">profile</span></code> in the detailed page you will be redirected</p>
+<p>to the profile of the engineer that created that project and also click on the <code class="docutils literal notranslate"><span class="pre">message</span></code> button</p>
 <p>you need to create an account tho to send a message</p>
 <a class="reference internal image-reference" href="_images/profile_b.png"><img alt="_images/profile_b.png" src="_images/profile_b.png" style="width: 438.0px; height: 318.5px;" /></a>
 </section>

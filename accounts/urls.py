@@ -7,6 +7,7 @@ from .views import (
     EngineerSettings,
     EngineerProject,
     PrivateProjects,
+    CreateMessage,
 )
 from . import views
 
@@ -19,5 +20,6 @@ urlpatterns = [
     path("settings/<str:pk>/", EngineerSettings.as_view(), name="settings"),
     path("projects/<str:pk>/", EngineerProject.as_view(), name="projects"),
     path("private/<str:pk>/", PrivateProjects.as_view(), name="private"),
-    path("json/<str:pk>/", views.django_models_json, name="json")
+    path("json/<str:pk>/", views.django_models_json, name="json"),
+    path('message/<str:pk>/', CreateMessage.as_view(), name='message')
 ]

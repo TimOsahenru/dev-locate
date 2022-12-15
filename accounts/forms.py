@@ -1,6 +1,5 @@
 from django import forms
-from .models import Engineer
-from django.contrib.auth.models import User
+from .models import Engineer, Message
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 
@@ -29,4 +28,13 @@ class EngineerForm(forms.ModelForm):
             "tech_stack": forms.TextInput(
                 attrs={"placeholder": "stack 1, stack 2, stack 3"}
             ),
+        }
+
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['message']
+        widgets = {
+            "message": forms.TextInput(attrs={"placeholder": "Write your message here..."})
         }

@@ -8,7 +8,7 @@ from .forms import EngineerCreationForm
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import EngineerForm
+from .forms import EngineerForm, MessageForm
 from django.http import HttpResponse
 from django.core.serializers import serialize
 
@@ -105,6 +105,32 @@ class EngineerSettings(LoginRequiredMixin, UpdateView):
 # only engineers should be able to update their profile
 
 
-class CreateMessage(CreateView):
+class CreateMessage(LoginRequiredMixin, CreateView):
     model = Message
     template_name = '../templates/create-message.html'
+    form_class = MessageForm
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateMessage, self).get_context_data()
+        context['engineers'] = Engineer.objects.all().exclude(username=self.request.user)
+        pk = self.kwargs.get("pk")
+        context['engineer'] = Engineer.objects.get(pk=pk)
+        engineer = context['engineer']
+        sender_messages = Message.objects.filter(sender=self.request.user, receiver=engineer)
+
+        received_messages = Message.objects.filter(sender=engineer, receiver=self.request.user)
+        context['messages'] = (sender_messages | received_messages).distinct()
+        return context
+
+    def form_valid(self, form):
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = self.request.user
+            pk = self.kwargs.get("pk")
+            message.receiver = Engineer.objects.get(pk=pk)
+            form.save()
+            return redirect('message', pk=self.request.user.id)
+        return super(CreateMessage, self).form_valid(form)
+
+    # def get_success_url(self):
+    #     return reverse('message', args=[self.request.user.id])

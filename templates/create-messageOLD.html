@@ -1,0 +1,16 @@
+{% for mail in messages %}
+<p>Sender:{{mail.sender.username}}</p>
+<p>Message: {{mail.message}}</p>
+{% endfor %}
+
+{% if request.user == engineer %}
+{% for message in engineers %}
+<a href="{% url 'message' message.id %}">{{message.username}}</a>
+{% endfor %}
+{% else %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="send">
+</form>
+{% endif %}
